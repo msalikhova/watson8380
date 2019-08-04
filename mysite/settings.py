@@ -26,8 +26,6 @@ SECRET_KEY = 'u6(h9j%$u&ooan@+5%=p$(w^hs(o@u-_^%ba4t0kjn3g2^tx%6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -136,9 +134,6 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-
-
-
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
@@ -149,6 +144,8 @@ DATABASES['default'] = dj_database_url.config()
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = ' whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 try:
     from .local_settings import *
